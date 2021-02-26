@@ -1,7 +1,6 @@
 # 찰랑말랑 iOS
 
 #### AppStore
-Click Here!
 [![](/Colendar/Assets.xcassets/AppIcon.appiconset/icon_40pt@2x.png)](https://apps.apple.com/kr/app/찰랑말랑/id1477694079)
 
 #### Thumbnails
