@@ -1,5 +1,7 @@
 # 찰랑말랑 iOS
 
+> SK e&s 와의 콜라보 활동으로 인한 찰랑말랑 레포 Private
+
 #### AppStore
 [![](/README_Asset/icon_40pt@2x.png)](https://apps.apple.com/kr/app/찰랑말랑/id1477694079)
 
