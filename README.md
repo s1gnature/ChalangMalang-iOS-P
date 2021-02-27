@@ -79,14 +79,14 @@
    > <br><br>
    > > didFinishLaunchingWithOptions(앱 실행 시) 에서는 UserDefaults에 저장된 OfflineQueue를 불러오고,<br>
    > > applicationWillTerminate(앱 종료 시) 에서는 OfflineQueue를 UserDefaults에 저장한다.
-   > 1. 먼저 메인화면에서 viewDidLoad를 통해 해당 유저가 작성한 데이터를 caching하여 갖고 있는다.
-   > 1-1. 이 때, 인터넷 연결이 되어 있지 않다면 데이터를 가져올 수 없다는 알림을 띄워준다.
-   > 2. 다음 유저가 감정을 작성하는 화면에서 완료를 눌렀을 시점에 인터넷 연결 상태를 체크한다. (서버에 요청을 보내고 response를 기다리기엔 시간이 소요되므로) 
-   > 2-1(연결이 되어 있지 않은 경우). OfflineQueue에 작성된 post를 append 시킨다.
-   > 2-2-1(연결이 되어 있는 경우). OfflineQueue가 비어있는지 확인 후, post가 있다면 먼저 request를 보낸다.
-   > 2-2-2. request가 완료되면 OfflineQueue를 비운다.
-   > 2-3. 2에서 작성 된 post를 request 한다.
-   > 3. 다음 화면인 List 뷰에서 OfflineQueue가 empty가 아닐 경우 caching한 데이터에 append 시켜 collectionView에 띄워준다 (온라인데이터 + 오프라인데이터)
+   > 1. 먼저 메인화면에서 viewDidLoad를 통해 해당 유저가 작성한 데이터를 caching하여 갖고 있는다.<br>
+   > 1-1. 이 때, 인터넷 연결이 되어 있지 않다면 데이터를 가져올 수 없다는 알림을 띄워준다.<br>
+   > 2. 다음 유저가 감정을 작성하는 화면에서 완료를 눌렀을 시점에 인터넷 연결 상태를 체크한다. (서버에 요청을 보내고 response를 기다리기엔 시간이 소요되므로)<br>
+   > 2-1(연결이 되어 있지 않은 경우). OfflineQueue에 작성된 post를 append 시킨다.<br>
+   > 2-2-1(연결이 되어 있는 경우). OfflineQueue가 비어있는지 확인 후, post가 있다면 먼저 request를 보낸다.<br>
+   > 2-2-2. request가 완료되면 OfflineQueue를 비운다.<br>
+   > 2-3. 2에서 작성 된 post를 request 한다.<br>
+   > 3. 다음 화면인 List 뷰에서 OfflineQueue가 empty가 아닐 경우 caching한 데이터에 append 시켜 collectionView에 띄워준다 (온라인데이터 + 오프라인데이터)<br>
 License
 ----
 MIT
