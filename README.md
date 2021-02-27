@@ -87,6 +87,8 @@
    > **2-2-2.** request가 완료되면 OfflineQueue를 비운다.<br>
    > **2-3.** 2에서 작성 된 post를 request 한다.<br>
    > **3.** 다음 화면인 List 뷰에서 OfflineQueue가 empty가 아닐 경우 caching한 데이터에 append 시켜 collectionView에 띄워준다 (온라인데이터 + 오프라인데이터)<br>
+
+
 License
 ----
 MIT
