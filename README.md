@@ -78,7 +78,7 @@
    > OfflineQueue의 Flow는 다음과 같다
    > <br><br>
    > > didFinishLaunchingWithOptions(앱 실행 시) 에서는 UserDefaults에 저장된 OfflineQueue를 불러오고,<br>
-   > > applicationWillTerminate(앱 종료 시) 에서는 OfflineQueue를 UserDefaults에 저장한다.
+   > > applicationWillTerminate(앱 종료 시) 에서는 OfflineQueue를 UserDefaults에 저장한다.<br>
    > **1.** 먼저 메인화면에서 viewDidLoad를 통해 해당 유저가 작성한 데이터를 caching하여 갖고 있는다.<br>
    > **1-1.** 이 때, 인터넷 연결이 되어 있지 않다면 데이터를 가져올 수 없다는 알림을 띄워준다.<br>
    > **2.** 다음 유저가 감정을 작성하는 화면에서 완료를 눌렀을 시점에 인터넷 연결 상태를 체크한다. (서버에 요청을 보내고 response를 기다리기엔 시간이 소요되므로)<br>
