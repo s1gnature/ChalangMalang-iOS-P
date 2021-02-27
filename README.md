@@ -37,7 +37,7 @@
    푸시를 받았을 때 깜짝선물을 보여주기 위한 타이머 관련 Singleton Class 입니다.
    
    <br/>
-   1. shared 관련 기능 (PushTimer의 메소드) <br/>
+   1. PushTimer 관련 기능 (실질적인 타이머 생성 및 관리, 제거에 사용) <br/>
    PushTimer.shared 로 접근합니다
    
    > - initTimer() -> Void <br/>
@@ -47,10 +47,10 @@
    > - loadTimer() -> Void <br/>
    > PushTimer를 불러오는데 사용합니다. UserDefaults에 "pushTimer" 키값으로 Timer 객체를 불러와 싱글톤 객체에 초기화합니다. <br/>
    > - terminateTimer() -> Void <br/>
-   > PushTimer를 제거하는데 사용합니다. Timer 객체의 terminateTimer()를 호출 후 saveTimer()를 호출하여 변경사항을 저장합니다. <br/>
+   > PushTimer를 제거하는데 사용합니다. Timer 객체의 terminateTimer()를 통한 제거 후 saveTimer()가 호출되어 상태를 저장합니다. <br/>
    
    <br/>
-   2. timer 관련 기능 <br/>
+   2. timer 관련 기능 (timer의 세부적인 )<br/>
    PushTimer.shared.timer 로 접근합니다
    
    > - startTime: Int, (Default: -1) <br/>
