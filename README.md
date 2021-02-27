@@ -68,8 +68,8 @@
 - Firebase RemoteConfig를 통한 앱 사용 최소 버전 분기
 - ~~Google admob 배너 적용~~ *기능 삭제*
 - Lottie를 통한 애니메이션 로직 구현
-- Network 로직 작성 *(캡슐화 전혀 안 되어 있음)
-- Firebase를 이용한 Push 구현 *(했으나 기능상 문제로 취소)
+- Network 로직 작성 *(캡슐화 전혀 안 되어 있음)*
+- Firebase를 이용한 Push 구현 *(했으나 기능상 문제로 취소)*
 - OfflineQueue 로직 구현
    > **Trouble Shooting**<br><br>
    > 기획이 명확해질 쯤 다이어리 성향이 강한 서비스에 과연 서버가 필요할까? 라는 의문점이 재기됨. (여타 다이어리 앱은 로그인 기능이 없고, 오프라인 상태에서도 이용할 수 있음)
