@@ -77,7 +77,7 @@
    > 약 1~2주 간의 논의를 마친 뒤 나온 결론이 OfflineQueue를 클라이언트에서 만들어 오프라인 상태에서도 유저에게 마치 서비스가 잘 돌아가는 것 처럼(온라인 상태인 것 처럼) 보이게 하여 해결함.
    > OfflineQueue의 Flow는 다음과 같다
    > <br><br>
-   > > didFinishLaunchingWithOptions(앱 실행 시) 에서는 UserDefaults에 저장된 OfflineQueue를 불러오고,
+   > > didFinishLaunchingWithOptions(앱 실행 시) 에서는 UserDefaults에 저장된 OfflineQueue를 불러오고,<br>
    > > applicationWillTerminate(앱 종료 시) 에서는 OfflineQueue를 UserDefaults에 저장한다.
    > 1. 먼저 메인화면에서 viewDidLoad를 통해 해당 유저가 작성한 데이터를 caching하여 갖고 있는다.
    > 1-1. 이 때, 인터넷 연결이 되어 있지 않다면 데이터를 가져올 수 없다는 알림을 띄워준다.
