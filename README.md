@@ -5,6 +5,7 @@
 #### SK E&S 추가기능
 - 설문조사 뷰 추가 도입.
 - 설문조사에 사용할 RadioButton Logic 구현
+- 설문조사(TableView)에서 필수 설문 항목에 대한 설문 여부 확인 로직(각각의 RadioButton isCheck?)
 - 설문조사를 바탕으로 한 꺾은선 그래프 차트 도입. [Charts](https://github.com/danielgindi/Charts)
 
 #### AppStore
