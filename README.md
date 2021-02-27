@@ -75,7 +75,7 @@
    > 기획이 명확해질 쯤 다이어리 성향이 강한 서비스에 과연 서버가 필요할까? 라는 의문점이 재기됨. (여타 다이어리 앱은 로그인 기능이 없고, 오프라인 상태에서도 이용할 수 있음)
    > 그래서 서로가 학술적인 의미로 서버(온라인)를 가져가되, 오프라인에서도 불편함 없이 사용이 가능하도록 구현을 하자! 라는 의견으로 모아짐.<br>
    > 약 1~2주 간의 논의를 마친 뒤 나온 결론이 OfflineQueue를 클라이언트에서 만들어 오프라인 상태에서도 유저에게 마치 서비스가 잘 돌아가는 것 처럼(온라인 상태인 것 처럼) 보이게 하여 해결함.<br>
-   > OfflineQueue의 Flow는 다음과 같다
+   > OfflineQueue의 Flow및  다음과 같다
    > <br><br>
    > > didFinishLaunchingWithOptions(앱 실행 시) 에서는 UserDefaults에 저장된 OfflineQueue를 불러오고,<br>
    > > applicationWillTerminate(앱 종료 시) 에서는 OfflineQueue를 UserDefaults에 저장한다.<br>
