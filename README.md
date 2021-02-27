@@ -68,7 +68,7 @@
 - Firebase RemoteConfig를 통한 앱 사용 최소 버전 분기
 - ~~Google admob 배너 적용~~ *기능 삭제*
 - Lottie를 통한 애니메이션 로직 구현
-- Network 로직 작성
+- Network 로직 작성 (캡슐화 전혀 안 되어 있음)
 - Firebase를 이용한 Push 구현 (했으나 기능상 문제로 취소)
 - OfflineQueue 로직 구현
    > **Trouble Shooting**<br><br>
