@@ -8,7 +8,7 @@
 - 설문조사를 바탕으로 한 꺾은선 그래프 차트 도입. [![Charts]](https://github.com/danielgindi/Charts)
 
 #### AppStore
-[![](/README_Asset/icon_40pt@2x.png)](https://apps.apple.com/kr/app/찰랑말랑/id1477694079)
+[[](/README_Asset/icon_40pt@2x.png)](https://apps.apple.com/kr/app/찰랑말랑/id1477694079)
 
 #### Thumbnails
 <div>
