@@ -126,7 +126,3 @@ Copyright © 2019 [찰랑말랑 of NEXTERS](https://github.com/nexters-colary)
 
 ----
 
-
-<a href="https://sourcerer.io/freemjstudio"><img src="https://avatars1.githubusercontent.com/u/41604678?v=4" height="50px" width="50px" alt=""/></a>
-<a href="https://sourcerer.io/freemjstudio"><img src="https://img.shields.io/badge/Swift-9%20commits-orange.svg" alt=""></a>
-
