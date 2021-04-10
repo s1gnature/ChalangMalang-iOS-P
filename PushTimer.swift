@@ -1,11 +1,3 @@
-//
-//  PushTimer.swift
-//  Colendar
-//
-//  Created by mong on 2020/12/29.
-//  Copyright © 2020 찰랑말랑. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -19,13 +11,11 @@ class PushTimer {
             let formatter = DateFormatter()
             formatter.locale = Locale.current
             formatter.dateFormat = "HH:mm:ss"
-//            let currentDate = formatter.string(from: date)
             
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: date)
             let minutes = calendar.component(.minute, from: date)
             let seconds = calendar.component(.second, from: date)
-//            let day = calendar.component(.day, from: date)
             
             let currentTime = hour * 3600 + minutes * 60 + seconds
             return currentTime
@@ -42,29 +32,13 @@ class PushTimer {
         }
     }
     
-    /// [필수, init] Push Timer를 init합니다 - test용도 -> timerAfter(몇초 후?), color(어떤 감정 색?)
-    func initTimer(timeAfter: Int, color: String) {
-        self.timer.isTimeout = false
-        self.timer.color = color
-        self.timer.expireTime = self.currentTime + timeAfter // 삭제 요망
-        saveTimer()
-        print("## Timer Initialized!")
-    }
-    /// [필수, init] Push Timer를 init합니다 - test용도 -> timerAfter(몇초 후?), color(어떤 감정 색?)
-    func initTimerWithUserInfo(timeAfter: Int, color: String, userInfo: [AnyHashable:Any]) {
-        self.timer.isTimeout = false
-        self.timer.color = color
-        self.timer.specialGift = SpecialGift(userInfo: userInfo)
-        self.timer.expireTime = self.currentTime + timeAfter // 삭제 요망
-        saveTimer()
-        print("## Timer Initialized!")
-    }
-    /// [필수, init] Push Timer를 init합니다 - test용도 -> timerAfter(몇초 후?), color(어떤 감정 색?)
-    func initTimerWithSpecialGift(timeAfter: Int, color: String, specialGift: SpecialGift) {
+    // MARK: - Init
+    /// [필수, init] Push로 받은 SpecialGift를 통해 Timer를 초기화 합니다. 
+    func initTimer(specialGift: SpecialGift) {
         self.timer.isTimeout = false
         self.timer.color = color
         self.timer.specialGift = specialGift
-        self.timer.expireTime = self.currentTime + timeAfter // 삭제 요망
+        self.timer.startTime = self.currentTime
         saveTimer()
         print("## Timer Initialized!")
     }
@@ -93,7 +67,7 @@ class PushTimer {
             print(error)
         }
         
-        // timeout init
+        // timeout
         if self.timer.color == nil {
             self.timer.isTimeout = true
         }
@@ -108,9 +82,10 @@ class PushTimer {
 class PTimer: NSObject, NSCoding {
     var specialGift: SpecialGift?
     
+    /// 시작 시간이 currentTime으로 할당되면 종료 시간(expireTime)을 해당 시간으로 부터 1일 뒤로 설정합니다.
     var startTime: Int = -1 {
         willSet(newValue) {
-            expireTime = newValue + 1000
+            expireTime = newValue + (24 * 60 * 60)
         }
         didSet{
             print("타이머 시작 시각: \(startTime), 타이머 만료 시각: \(expireTime)")
@@ -132,17 +107,9 @@ class PTimer: NSObject, NSCoding {
         self.color = nil
     }
     
-    /// Test: 시작 시간을 지정합니다
-    init(startTime: Int) {
+    /// UserDefault에 저장할 timer를 초기화 합니다. default startTime은 -1 입니다.
+    init(startTime: Int = -1) {
         self.startTime = startTime
-    }
-    /// Test: SpecialGift 구조체를 파라미터로 사용합니다
-    init(specialGift: SpecialGift) {
-        self.specialGift = specialGift
-    }
-    /// 푸시의 userInfo를 파라미터로 사용합니다
-    init(userInfo: [AnyHashable:Any]) {
-        self.specialGift = SpecialGift(userInfo: userInfo)
     }
     private override init(){
     
@@ -155,7 +122,7 @@ class PTimer: NSObject, NSCoding {
         self.isTimeout = coder.decodeBool(forKey: "isTimeout")
     }
     func encode(with coder: NSCoder) {
-        coder.encode(self.specialGift, forKey: "specialGift")
+        coder.encode(self.specialGift?.encode(), forKey: "specialGift")
         coder.encode(self.startTime, forKey: "startTime")
         coder.encode(self.expireTime, forKey: "expireTime")
         coder.encode(self.color, forKey: "color")
@@ -169,20 +136,6 @@ struct SpecialGift {
     let month: String
     let color: String
     let subtitle: String
-    
-    /// Test 용도, 삭제 필
-    init(postIdArray: [Int], month: String, color: String, subtitle: String){
-        self.postIdArray = postIdArray
-        self.month = month
-        self.color = color
-        self.subtitle = subtitle
-        
-        print("## SpecialGift init")
-        print("postID: \(self.postIdArray)")
-        print("month: \(self.month)")
-        print("color: \(self.color)")
-        print("subtitle: \(self.subtitle)\n")
-    }
     
     /// 푸시로 받은 userInfo를 통해 SpecialGift 구조체를 초기화 합니다
     init?(userInfo: [AnyHashable:Any]) {
@@ -213,5 +166,31 @@ struct SpecialGift {
         print("color: \(self.color)")
         print("subtitle: \(self.subtitle)\n")
     }
+    
+    func encode() -> Data {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.encode(postIdArray, forKey: "postIdArray")
+        archiver.encode(month, forKey: "month")
+        archiver.encode(color, forKey: "color")
+        archiver.encode(subtitle, forKey: "subtitle")
+        
+        return archiver.encodedData
+    }
+    init?(data: Data) {
+        let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+        defer {
+            unarchiver.finishDecoding()
+        }
+        guard let postIdArray =  unarchiver.decodeObject(forKey: "postIdArray") as? [Int] else { return nil }
+        guard let month = unarchiver.decodeObject(forKey: "month") as? String else { return nil }
+        guard let color = unarchiver.decodeObject(forKey: "color") as? String else { return nil }
+        guard let subtitle = unarchiver.decodeObject(forKey: "subtitle") as? String else { return nil }
+        self.postIdArray = postIdArray
+        self.month = month
+        self.color = color
+        self.subtitle = subtitle
+    }
 }
+
 
