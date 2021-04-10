@@ -6,30 +6,26 @@ class PushTimer {
     static let shared = PushTimer()
     var timer = PTimer(startTime: -1)
     var currentTime: Int {
-        get {
-            let date = Date()
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.dateFormat = "HH:mm:ss"
-            
-            let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: date)
-            let minutes = calendar.component(.minute, from: date)
-            let seconds = calendar.component(.second, from: date)
-            
-            let currentTime = hour * 3600 + minutes * 60 + seconds
-            return currentTime
-        }
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "HH:mm:ss"
+
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+
+        let currentTime = hour * 3600 + minutes * 60 + seconds
+        return currentTime
     }
     /// 남은 시간
     var leftTime: Int {
-        get {
-            let _leftTime = self.timer.expireTime - self.currentTime
-            if _leftTime < 0 {
-                self.terminateTimer()
-            }
-            return _leftTime
+        let _leftTime = self.timer.expireTime - self.currentTime
+        if _leftTime < 0 {
+            self.terminateTimer()
         }
+        return _leftTime
     }
     
     // MARK: - Init
