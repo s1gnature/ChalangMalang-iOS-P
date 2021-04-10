@@ -33,7 +33,7 @@ class PushTimer {
     }
     
     // MARK: - Init
-    /// [필수, init] Push로 받은 SpecialGift를 통해 Timer를 초기화 합니다. 
+    /// [필수, init] Push로 받은 SpecialGift를 통해 Timer를 초기화 합니다. 만료 시간은 1일 후 입니다.
     func initTimer(specialGift: SpecialGift) {
         self.timer.isTimeout = false
         self.timer.color = color
