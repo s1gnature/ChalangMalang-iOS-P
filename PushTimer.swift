@@ -100,13 +100,6 @@ class PTimer: NSObject, NSCoding {
     var isTimeout = true
     var color: String?
     
-    fileprivate func terminateTimer(){
-        self.startTime = -1
-        self.expireTime = -1
-        self.isTimeout = true
-        self.color = nil
-    }
-    
     /// UserDefault에 저장할 timer를 초기화 합니다. default startTime은 -1 입니다.
     init(startTime: Int = -1) {
         self.startTime = startTime
@@ -114,6 +107,14 @@ class PTimer: NSObject, NSCoding {
     private override init(){
     
     }
+    
+    fileprivate func terminateTimer(){
+        self.startTime = -1
+        self.expireTime = -1
+        self.isTimeout = true
+        self.color = nil
+    }
+    
     required init?(coder: NSCoder) {
         self.specialGift = coder.decodeObject(forKey: "specialGift") as? SpecialGift
         self.startTime = coder.decodeInteger(forKey: "startTime")
