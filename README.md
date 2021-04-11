@@ -50,7 +50,7 @@
    > PushTimer를 제거하는데 사용합니다. Timer 객체의 terminateTimer()를 통한 제거 후 saveTimer()가 호출되어 상태를 저장합니다. <br/>
    
    <br/>
-   2. timer 관련 기능 (timer의 세부적인 )<br/>
+   2. timer 관련 기능 (timer의 세부적인 값)<br/>
    PushTimer.shared.timer 로 접근합니다
    
    > - startTime: Int, (Default: -1) <br/>
@@ -68,7 +68,7 @@
 - Firebase RemoteConfig를 통한 앱 사용 최소 버전 분기
 - ~~Google admob 배너 적용~~ *기능 삭제*
 - Lottie를 통한 애니메이션 로직 구현
-- Network 로직 작성 *(캡슐화 전혀 안 되어 있음)*
+- Network 로직 작성 *(캡슐화 안 되어 있음)*
 - Firebase를 이용한 Push 구현 *(했으나 기능상 문제로 취소)*
 - OfflineQueue 로직 구현
    > **Trouble Shooting**<br><br>
