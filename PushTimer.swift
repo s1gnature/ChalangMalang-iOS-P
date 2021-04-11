@@ -4,7 +4,7 @@ import UIKit
 class PushTimer {
     /// timer 싱글톤 패턴
     static let shared = PushTimer()
-    var timer = PTimer(startTime: -1)
+    var timer = PTimer()
     var currentTime: Int {
         let date = Date()
         let formatter = DateFormatter()
