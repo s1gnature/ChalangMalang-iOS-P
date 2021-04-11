@@ -28,7 +28,6 @@
 #### CocoaPod
 - KYDrawerController
 - FSCalendar
-- UIColor_Hex_Swift
 - lottie-ios
 - Firebase
 - SwiftLint (확인 용도로만 사용)
